@@ -4,7 +4,7 @@ if(process.env.NODE_ENV!="production"){
 }
 
 const express=require("express");
-const router=express.Router();
+//const router=express();
 const app=express();
 
 const mongoose=require("mongoose");
