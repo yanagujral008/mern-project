@@ -29,7 +29,7 @@
 ## 📸 Screenshots
 
 ### Homepage:
-![Homepage](Screenshot (324).png)
+![Homepage](https://github.com/yanagujral008/mern-project/blob/main/Screenshot%20(324).png?raw=true)
 
 ### Listing Page:
 ![Listing](Screenshot (325).png)
