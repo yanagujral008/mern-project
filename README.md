@@ -30,10 +30,10 @@ Manzil ek full stack project hai jo Airbnb jaise design pe bana hai. Isme listin
 ## 📸 Screenshots
 
 ### Homepage:
-![Homepage](public/images/screenshots/home.png)
+![Homepage](public/images/Screenshot(324))
 
 ### Listing Page:
-![Listing](public/images/screenshots/listing.png)
+![Listing](public/images/Screenshot(325))
 
 > Screenshot images aapko `public/images/screenshots/` folder mein rakhne honge.
 
