@@ -29,10 +29,10 @@
 ## 📸 Screenshots
 
 ### Homepage:
-![Homepage](public/Screenshot(324).png)
+![Homepage](Screenshot (324).png)
 
 ### Listing Page:
-![Listing](public/Screenshot(325).png)
+![Listing](Screenshot (325).png)
 
 
 ---
