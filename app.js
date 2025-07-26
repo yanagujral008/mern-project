@@ -38,6 +38,8 @@ const userRouter =require("./routes/user.js");
 
 
 
+
+
 main().then(()=>{
     console.log("connected to Db");
 
@@ -47,7 +49,9 @@ main().then(()=>{
 
 async function main(){
     await mongoose.connect(dbURL);
+
 }
+
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
 app.use(express.urlencoded({extended:true}));
@@ -102,9 +106,14 @@ app.use((req,res,next)=>{
 
 
 
+
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
+
+    
 app.use("/",userRouter);
+
+
 
 
 const validateListing=(req,res,next)=>{
@@ -115,17 +124,15 @@ const validateListing=(req,res,next)=>{
         throw new ExpressError(400,errMsg);
     }else{
         next();
-    }
-
-}
-
-
-
+    }};
+    
 
 
 app.all("*",(req,res,next)=>{
     next(new ExpressError(404,"Page not found"));
 });
+
+    
 
 
 app.use((err,req,res,next)=>{
@@ -133,6 +140,10 @@ app.use((err,req,res,next)=>{
     res.status(statusCode).render("error.ejs",{message});
    // res.status(statusCode).send(message);
 });
+
+
+
+
 app.listen(8080,()=>{
     console.log("server is listening to port 8080");
 });

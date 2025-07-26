@@ -91,3 +91,67 @@ body{
     padding-left:0;
     padding-right:0
 }
+/* DARK MODE FIXES */
+
+/* Base text color for dark mode */
+.dark-mode {
+    color: #e0e0e0;
+    background-color: #121212;
+  }
+  
+  /* Navbar text in dark mode */
+  .dark-mode .navbar,
+  .dark-mode .navbar a,
+  .dark-mode .navbar-brand,
+  .dark-mode .navbar-nav .nav-link {
+    color: #e0e0e0 !important;
+  }
+  
+  /* Buttons in dark mode */
+  .dark-mode .btn {
+    background-color: #333;
+    color: #e0e0e0;
+    border-color: #555;
+  }
+  
+  .dark-mode .btn:hover {
+    background-color: #444;
+    color: white;
+  }
+  
+  /* Cards and card content */
+  .dark-mode .card,
+  .dark-mode .card-body,
+  .dark-mode .card-title,
+  .dark-mode .card-text {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+  }
+  
+  /* Search bar and other input fields */
+  .dark-mode .form-control {
+    background-color: #222;
+    color: #e0e0e0;
+    border: 1px solid #444;
+  }
+  
+  .dark-mode .form-control::placeholder {
+    color: #aaa;
+  }
+  
+  /* Dropdown menu in dark mode */
+  .dark-mode .dropdown-menu {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+  }
+  .category-link {
+    color: black;
+    text-decoration: none; /* optional: remove underline */
+  }
+  
+  
+  /* Smooth transition */
+  body {
+    transition: background-color 0.3s, color 0.3s;
+  }
+  

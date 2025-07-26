@@ -2,11 +2,28 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Review=require("./review.js");
 
+
 const listingSchema = new Schema({
     title: {
         type: String,
         required: true
-    },
+    },category: {
+        type: String,
+        enum: [
+          "Trending",
+          "Rooms",
+          "Iconic Cities",
+          "Mountains",
+          "Castles",
+          "Amazing Pools",
+          "Camping",
+          "Farms",
+          "Arctic",
+          "Boats",
+          "Domes"
+        ]
+      }
+      ,
     description: String,
     image: {
         filename: String,

@@ -5,7 +5,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 1.5rem; /* spacing between filters */
+    gap: 1.5rem;
     padding: 1rem 0;
   }
 
@@ -27,10 +27,10 @@
   .tax-info {
     display: none;
   }
-  .my-icon {
-  color: 		#4f000b; /* Example: soft purple */
-}
 
+  .my-icon {
+    color: #4f000b;
+  }
 
   .tax-toggle {
     border: 1px solid black;
@@ -43,22 +43,29 @@
     opacity: 0.8;
     white-space: nowrap;
   }
+  .filter{
+  color: black;
+  text-decoration: none; /* optional: remove underline */
+}
+
 </style>
 
+<!-- Filters -->
 <div id="filters">
-  <div class="filter"><div><i class="fa-solid fa-fire my-icon"></i></div><p>Trending</p></div>
-  <div class="filter"><div><i class="fa-solid fa-bed my-icon"></i></div><p>Rooms</p></div>
-  <div class="filter"><div><i class="fa-solid fa-mountain-city my-icon "></i></div><p>Iconic Cities</p></div>
-  <div class="filter"><div><i class="fa-solid fa-mountain my-icon"></i></div><p>Mountains</p></div>
-  <div class="filter"><div><i class="fa-brands fa-fort-awesome my-icon"></i></div><p>Castles</p></div>
-  <div class="filter"><div><i class="fa-solid fa-person-swimming my-icon"></i></div><p>Amazing Pools</p></div>
-  <div class="filter"><div><i class="fa-solid fa-campground my-icon"></i></div><p>Camping</p></div>
-  <div class="filter"><div><i class="fa-solid fa-tractor my-icon"></i></div><p>Farms</p></div>
-  <div class="filter"><div><i class="fa-solid fa-snowman my-icon"></i></div><p>Arctic</p></div>
-  <div class="filter"><div><i class="fa-solid fa-sailboat my-icon"></i></div><p>Boats</p></div>
-  <div class="filter"><div><i class="fa-solid fa-landmark-dome my-icon"></i></div><p>Domes</p></div>
+  <a href="/listings?category=Trending" class="filter"> 
+    <div><i class="fa-solid fa-fire my-icon"></i></div><p>Trending</p></a>
+  <a href="/listings?category=Rooms" class="filter"><div><i class="fa-solid fa-bed my-icon"></i></div><p>Rooms</p></a>
+  <a href="/listings?category=Iconic Cities" class="filter"><div><i class="fa-solid fa-mountain-city my-icon"></i></div><p>Iconic Cities</p></a>
+  <a href="/listings?category=Mountains" class="filter"><div><i class="fa-solid fa-mountain my-icon"></i></div><p>Mountains</p></a>
+  <a href="/listings?category=Castles" class="filter"><div><i class="fa-brands fa-fort-awesome my-icon"></i></div><p>Castles</p></a>
+  <a href="/listings?category=Amazing Pools" class="filter"><div><i class="fa-solid fa-person-swimming my-icon"></i></div><p>Amazing Pools</p></a>
+  <a href="/listings?category=Camping" class="filter"><div><i class="fa-solid fa-campground my-icon"></i></div><p>Camping</p></a>
+  <a href="/listings?category=Farms" class="filter"><div><i class="fa-solid fa-tractor my-icon"></i></div><p>Farms</p></a>
+  <a href="/listings?category=Arctic" class="filter"><div><i class="fa-solid fa-snowman my-icon"></i></div><p>Arctic</p></a>
+  <a href="/listings?category=Boats" class="filter"><div><i class="fa-solid fa-sailboat my-icon"></i></div><p>Boats</p></a>
+  <a href="/listings?category=Domes" class="filter"><div><i class="fa-solid fa-landmark-dome my-icon"></i></div><p>Domes</p></a>
+  
 
-  <!-- Toggle with spacing, in same line -->
   <div class="tax-toggle">
     <div class="form-check-reverse form-switch">
       <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
@@ -66,4 +73,43 @@
     </div>
   </div>
 </div>
+
+<!-- Listings Display -->
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+  <% allListings.forEach(listing => { %>
+    <div class="col mb-4">
+      <div class="card h-100 shadow listing-card">
+        <img src="<%= listing.image.url %>" class="card-img-top" style="height: 250px; object-fit: cover;" alt="...">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title"><%= listing.title %></h5>
+          <p class="card-text"><%= listing.description?.substring(0, 100) %>...</p>
+          <p class="card-text"><i><%= listing.location %>, <%= listing.country %></i></p>
+          <p class="card-text"><strong>₹<%= listing.price %></strong></p>
+          <a href="/listings/<%= listing._id %>" class="btn btn-outline-dark mt-auto">View</a>
+        </div>
+      </div>
+    </div>
+  <% }); %>
+</div>
+<script>
+  const toggleSwitch = document.getElementById('switchCheckDefault');
+  const priceElements = document.querySelectorAll('.card-text strong');
+
+  // Store original prices
+  const originalPrices = Array.from(priceElements).map(el => parseFloat(el.innerText.replace('₹', '').replace(',', '')));
+
+  toggleSwitch.addEventListener('change', () => {
+    const includeTax = toggleSwitch.checked;
+
+    priceElements.forEach((el, i) => {
+      let price = originalPrices[i];
+      if (includeTax) {
+        let taxedPrice = price + price * 0.18; // 18% tax
+        el.innerText = `₹${Math.round(taxedPrice)}`;
+      } else {
+        el.innerText = `₹${price}`;
+      }
+    });
+  });
+</script>
 

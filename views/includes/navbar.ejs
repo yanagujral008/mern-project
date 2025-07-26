@@ -25,6 +25,23 @@
     font-size: 1rem;
 
   }
+  body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.dark-mode .navbar {
+  background-color: #1f1f1f;
+}
+
+.dark-mode .card,
+.dark-mode .container,
+.dark-mode .form-control {
+  background-color: #1e1e1e;
+  color: white;
+  border-color: #444;
+}
+
 </style>
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
@@ -43,14 +60,28 @@
         
       </div>
       <div class="navbar-nav ms-auto">  
-         <form class="d-flex" role="search">
-        <input class="form-control me-2 search-inp"
-         type="search" placeholder="Search destinations"/>
-        <button class="btn search-btn" type="submit"> 
-          <i class="fa-solid fa-magnifying-glass"></i>Search
-         </button>
-      </form></div>
+        <form class="d-flex" role="search" action="/listings/search" method="GET">
+          <input
+            class="form-control me-2 search-inp"
+            type="search"
+            name="q"
+            placeholder="Search destinations"
+            required
+          />
+          <button class="btn search-btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i> Search
+          </button>
+        </form>
+        </div>
+        <!-- Inside your navbar -->
+
+
       <div class="navbar-nav ms-auto">
+        <!-- Inside your navbar -->
+<button id="theme-toggle" class="btn btn-sm btn-outline-secondary ms-2">
+  🌞 Light
+</button>
+
         <a class="nav-link" href="/listings/new">Manzil your home</a>
         <% if(typeof currUser === "undefined"||!currUser){ %>
         
@@ -64,3 +95,23 @@
     </div>
   </div>
 </nav>
+<script>
+  const toggle = document.getElementById("theme-toggle");
+  const body = document.body;
+
+  if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark-mode");
+    toggle.innerText = "🌙 Dark";
+  }
+
+  toggle?.addEventListener("click", () => {
+    body.classList.toggle("dark-mode");
+    if (body.classList.contains("dark-mode")) {
+      localStorage.setItem("theme", "dark");
+      toggle.innerText = "🌙 Dark Mode";
+    } else {
+      localStorage.setItem("theme", "light");
+      toggle.innerText = "🌞 Light Mode";
+    }
+  });
+</script>
