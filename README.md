@@ -1,7 +1,6 @@
 # 🕌 Manzil – Full Stack Travel Listing Web App
 
-Manzil ek full stack project hai jo Airbnb jaise design pe bana hai. Isme listing banana, review karna, search karna, aur login/logout jaise features hain.
-
+**Manzil** is a fully responsive, secure, and feature-rich travel listing platform inspired by Airbnb. It allows users to explore, create, and manage travel listings, add reviews, and experience smooth and safe authentication – all built with a modern tech stack using the **MVC architecture**.
 ---
 
 ## 🔧 Technologies Used
@@ -30,10 +29,10 @@ Manzil ek full stack project hai jo Airbnb jaise design pe bana hai. Isme listin
 ## 📸 Screenshots
 
 ### Homepage:
-![Homepage](public/images/Screenshot(324))
+![Homepage](public/Screenshot(324))
 
 ### Listing Page:
-![Listing](public/images/Screenshot(325))
+![Listing](public/Screenshot(325))
 
 
 ---
