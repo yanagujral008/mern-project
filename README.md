@@ -1,4 +1,4 @@
-# 🕌 Manzil – Full Stack Travel Listing Web App
+#  Manzil – Full Stack Travel Listing Web App
 
 **Manzil** is a fully responsive, secure, and feature-rich travel listing platform inspired by Airbnb. It allows users to explore, create, and manage travel listings, add reviews, and experience smooth and safe authentication – all built with a modern tech stack using the **MVC architecture**.
 ---
@@ -43,3 +43,4 @@
 
 ```bash
 npm install
+npm app.js
